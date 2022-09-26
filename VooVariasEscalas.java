@@ -31,8 +31,11 @@ public class VooVariasEscalas extends Voo{
 
     
     public void display(){ //lista todos as aeronaves
+        System.out.println("Escalas: ");
+        int cont=1;
         for (int i=0; i<escalas.size(); i++){
-            System.out.println(escalas.get(i));
+            System.out.println("[" + cont + "] "+ escalas.get(i));
+            cont++;
         }
     }
 
