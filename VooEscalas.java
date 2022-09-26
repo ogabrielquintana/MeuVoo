@@ -5,11 +5,7 @@ public class VooEscalas extends Voo {
 
     public enum Status { CONFIRMADO, ATRASADO, CANCELADO }; 
 
-    private LocalDateTime datahora;
-    private Duration duracao;
-    private Rota rota;
     private Rota rotaFinal;
-    private Status status;
 
     // Construtor
     public VooEscalas(Rota rota, Rota rotaFinal, LocalDateTime datahora, Duration duracao) {
@@ -18,11 +14,9 @@ public class VooEscalas extends Voo {
     }
 
     
-
     public Rota getRotaFinal() {
         return rotaFinal;
     }
-
 
 
     @Override
