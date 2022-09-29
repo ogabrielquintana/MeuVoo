@@ -15,7 +15,7 @@ public class VooEscalas extends Voo{
         escalas = new ArrayList<>();
     }
 
-     public void adicionaROta(Rota rota) { //
+     public void adicionaRota(Rota rota) { //
         escalas.add( rota );
     }
   
@@ -51,17 +51,24 @@ public class VooEscalas extends Voo{
         Duration duration = Duration.ofMinutes(0);
         long f = 0;
         long g = 0;
-        double d, e = 0;
+        double d = 0, e = 0;
+        d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
+        e = (d / 805) * 60;
+        f = Double.valueOf(e).longValue();
+        duration = duration.plus(Duration.ofMinutes(f + 30));
+
         for(Rota r : escalas){
-            d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
-            e = ((805 / d) + 30);
-            f += Double.valueOf(e).longValue();
-            duration = duration.plusMinutes(f);
+            d = Geo.distancia(r.getOrigem().getLocal(), r.getDestino().getLocal());
+            e = (d / 805) * 60;
+            f = Double.valueOf(e).longValue();
+            duration = duration.plus(Duration.ofMinutes(f + 30));
         }
-        d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal()) - Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
-        e = ((805 / d) + 30);
-        g = Double.valueOf(e).longValue();
-        duration = duration.plusMinutes(g);
+
+        d = Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
+        e = (d / 805) * 60;
+        f = Double.valueOf(e).longValue();
+        duration = duration.plus(Duration.ofMinutes(f + 30));
+
         return duration;
     }
 
