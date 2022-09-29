@@ -10,12 +10,12 @@ public class VooEscalas extends Voo{
 
     public VooEscalas(LocalDateTime datahora, Rota rota, Rota rotaFinal) {
         super(datahora);
-        this.rota= rota;
+        this.rota = rota;
         this.rotaFinal = rotaFinal;
         escalas = new ArrayList<>();
-     }
+    }
 
-     public void adicionaROta(Rota rota) { //
+     public void adicionaRota(Rota rota) { //
         escalas.add( rota );
     }
   
@@ -48,12 +48,33 @@ public class VooEscalas extends Voo{
 
     @Override
     public Duration getDuracao() {
-        return null;
+        Duration duration = Duration.ofMinutes(0);
+        long f = 0;
+        long g = 0;
+        double d = 0, e = 0;
+        d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
+        e = (d / 805) * 60;
+        f = Double.valueOf(e).longValue();
+        duration = duration.plus(Duration.ofMinutes(f + 30));
+
+        for(Rota r : escalas){
+            d = Geo.distancia(r.getOrigem().getLocal(), r.getDestino().getLocal());
+            e = (d / 805) * 60;
+            f = Double.valueOf(e).longValue();
+            duration = duration.plus(Duration.ofMinutes(f + 30));
+        }
+
+        d = Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
+        e = (d / 805) * 60;
+        f = Double.valueOf(e).longValue();
+        duration = duration.plus(Duration.ofMinutes(f + 30));
+
+        return duration;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Escalas: " + escalas +" -> " + rotaFinal;
+        return super.toString() + "\nEscalas: " + escalas +" -> " + rotaFinal;
     }
 
     

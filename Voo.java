@@ -46,6 +46,6 @@ public abstract class Voo implements Contavel{
 	}
 
 	public String toString() {
-        return  getStatus() + " " + getDatahora() + getRota();  // (duracao): rota;
+        return  getStatus() + "\nDuração prevista: " + getDuracao() + "\n" + getDatahora() + "\n" + getRota();  // (duracao): rota;
     }
 }
