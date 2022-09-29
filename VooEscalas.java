@@ -10,10 +10,10 @@ public class VooEscalas extends Voo{
 
     public VooEscalas(LocalDateTime datahora, Rota rota, Rota rotaFinal) {
         super(datahora);
-        this.rota= rota;
+        this.rota = rota;
         this.rotaFinal = rotaFinal;
         escalas = new ArrayList<>();
-     }
+    }
 
      public void adicionaROta(Rota rota) { //
         escalas.add( rota );
@@ -48,12 +48,24 @@ public class VooEscalas extends Voo{
 
     @Override
     public Duration getDuracao() {
-        return null;
+        Duration duration = Duration.ofMinutes(0);
+        long f = 0;
+        for(Rota r : escalas){
+            double d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
+            double e = ((805 / d) + 30);
+            f += Double.valueOf(e).longValue();
+            duration = duration.plusMinutes(f);
+        }
+        double d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal()) - Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
+        double e = ((805 / d) + 30);
+        long g = Double.valueOf(e).longValue();
+        duration = duration.plusMinutes(g);
+        return duration;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Escalas: " + escalas +" -> " + rotaFinal;
+        return super.toString() + "\nEscalas: " + escalas +" -> " + rotaFinal;
     }
 
     
