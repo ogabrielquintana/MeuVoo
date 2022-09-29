@@ -50,15 +50,17 @@ public class VooEscalas extends Voo{
     public Duration getDuracao() {
         Duration duration = Duration.ofMinutes(0);
         long f = 0;
+        long g = 0;
+        double d, e = 0;
         for(Rota r : escalas){
-            double d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
-            double e = ((805 / d) + 30);
+            d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
+            e = ((805 / d) + 30);
             f += Double.valueOf(e).longValue();
             duration = duration.plusMinutes(f);
         }
-        double d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal()) - Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
-        double e = ((805 / d) + 30);
-        long g = Double.valueOf(e).longValue();
+        d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal()) - Geo.distancia(rotaFinal.getOrigem().getLocal(), rotaFinal.getDestino().getLocal());
+        e = ((805 / d) + 30);
+        g = Double.valueOf(e).longValue();
         duration = duration.plusMinutes(g);
         return duration;
     }
