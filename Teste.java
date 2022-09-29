@@ -14,8 +14,8 @@ public class Teste {
 
         GerenciadorAeronaves geren = new GerenciadorAeronaves();
 
-        Geo g1 = new Geo(123456789, 987654321);
-        Geo g2 = new Geo(2345678, 12347890);
+        Geo g1 = new Geo(-23.4327776, -46.4796442);
+        Geo g2 = new Geo(-29.9934732, -51.1775698);
 
 
         CiaAerea c1 = new CiaAerea("123456", "Marina Emirates");
@@ -47,15 +47,15 @@ public class Teste {
         LocalDateTime data  = LocalDateTime.of(2022, 9, 23, 12, 00);
 
         Duration d = Duration.ofMinutes(240);
+
+        GerenciadorVoos gerVoos = new GerenciadorVoos();
         
-        VooEscalas ve = new VooEscalas(r1, r2, data, d);
+        Voo ve = new VooEscalas(data, r1, r2);
         
-        Voo v1 = new Voo(r1, data, Duration.ofMinutes(120));
+        Voo vd = new VooDireto(data, r1);
 
 
-         //System.out.println(gr.pesquisarD(aero1).toString());
-
-        System.out.println(ve.getStatus());
+        System.out.println(ve.getDuracao());
 
 
         
