@@ -27,7 +27,7 @@ public class VooDireto extends Voo {
     }
 	
 	public String toString() {
-        return  getStatus() + " " + getDuracao() + " " + getDatahora() + getRota();  // (duracao): rota;
+        return  super.toString(); // (duracao): rota;
     }
     
 }
