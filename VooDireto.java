@@ -20,9 +20,9 @@ public class VooDireto extends Voo {
 	public Duration getDuracao() {
         Duration duration;
         double d = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
-        double e = ((805 / d) + 30);
+        double e = (d / 805) * 60;
         long f = Double.valueOf(e).longValue();
-        duration = Duration.ofMinutes(f);
+        duration = Duration.ofMinutes(f + 30);
         return duration;
     }
 	
