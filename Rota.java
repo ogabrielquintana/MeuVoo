@@ -33,6 +33,6 @@ public class Rota implements Comparable<Rota> {
 	}
 
 	public String toString(){
-		return "Voo: " + aeronave.toString();
+		return "Origem: " + getOrigem() + "\nDestino: " + getDestino() + "\nVoo: " + aeronave.toString() + "\n";
 	}
 }
